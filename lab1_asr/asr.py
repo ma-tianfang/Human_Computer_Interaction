@@ -28,9 +28,8 @@ class myWindow(QtWidgets.QMainWindow):
 
     def text(self):
         content = self.ui.text_box.text()
-
-        self.judge(content)
         self.ui.text_box.setText("")
+        self.judge(content)
 
     def listen_thread(self):
         self.ui.label.setText("I'm listening......")
