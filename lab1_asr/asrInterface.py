@@ -38,6 +38,7 @@ class Ui_MainWindow(object):
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
 
+        # you can:
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(40, 450, 500, 30))
         font = QtGui.QFont()
@@ -49,7 +50,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
 
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(40, 510, 500, 90))
+        self.label_3.setGeometry(QtCore.QRect(40, 480, 500, 50))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(14)
@@ -59,7 +60,7 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName("label_3")
 
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(40, 610, 500, 90))
+        self.label_4.setGeometry(QtCore.QRect(40, 540, 500, 60))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(14)
@@ -67,6 +68,16 @@ class Ui_MainWindow(object):
         self.label_4.setStyleSheet("color: rgb(0, 117, 210);")
         self.label_4.setWordWrap(True)
         self.label_4.setObjectName("label_4")
+
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(40, 610, 500, 60))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(14)
+        self.label_5.setFont(font)
+        self.label_5.setStyleSheet("color: rgb(0, 117, 210);")
+        self.label_5.setWordWrap(True)
+        self.label_5.setObjectName("label_5")
 
         self.text_box = QtWidgets.QLineEdit(MainWindow)
         self.text_box.setGeometry(QtCore.QRect(20,750,450,50))
@@ -107,4 +118,5 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "You can:"))
         self.label_3.setText(_translate("MainWindow", "1. Enjoy music by saying \"Play music\""))
         self.label_4.setText(_translate("MainWindow", "2. Take some notes by saying \"Open Notepad\""))
+        self.label_5.setText(_translate("MainWindow", "3. Open calculator by saying \"Open Calculator\""))
 

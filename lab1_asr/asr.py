@@ -29,24 +29,8 @@ class myWindow(QtWidgets.QMainWindow):
     def text(self):
         content = self.ui.text_box.text()
 
-        Instruction = ["music", "text", "calculator"]
-
-        instruction_play_music = re.search(Instruction[0].lower(), content.lower())
-        instruction_open_text_file = re.search(Instruction[1].lower(), content.lower())
-        instruction_calculator = re.search(Instruction[2].lower(), content.lower())
-
-        if instruction_play_music:
-            self.ui.label.setText("Play Music!")
-            win32api.ShellExecute(0, 'open', 'E:\\song.wma', '', '', 1)
-        elif instruction_open_text_file:
-            self.ui.label.setText("Open Text")
-            win32api.ShellExecute(0, 'open', 'notepad.exe', '', '', 0)
-        elif instruction_calculator:
-            self.ui.label.setText("Calculator")
-            win32api.ShellExecute(0, 'open', 'calc.exe', '', '', 0)
-        else:
-            self.ui.label.setText("I have no idea...")
-
+        self.judge(content)
+        self.ui.text_box.setText("")
 
     def listen_thread(self):
         self.ui.label.setText("I'm listening......")
@@ -63,28 +47,45 @@ class myWindow(QtWidgets.QMainWindow):
             content = mic.recognize_sphinx(audio)
         except sr.RequestError:
             self.ui.label.setText("Error!")
+            time.sleep(5)
 
-        Instruction = ["music", "text", "calculator"]
+            self.ui.label.setText("How can I help?")
+
+        print(content)
+        self.judge(content)
+
+    # 判断指令函数
+    def judge(self,content):
+        Instruction = ["music", "notepad", "calculator"]
 
         instruction_play_music = re.search(Instruction[0].lower(), content.lower())
         instruction_open_text_file = re.search(Instruction[1].lower(), content.lower())
         instruction_calculator = re.search(Instruction[2].lower(), content.lower())
 
+        self.ui.label_2.setVisible(False)
+        self.ui.label_3.setVisible(False)
+        self.ui.label_4.setVisible(False)
+        self.ui.label_5.setVisible(False)
+
         if instruction_play_music:
             self.ui.label.setText("Playing Music!")
-            win32api.ShellExecute(0, 'open', 'E:\\song.wma', '', '', 1)
+            win32api.ShellExecute(0, 'open', 'music\魔鬼中的天使.mp3', '', '', 1)
         elif instruction_open_text_file:
-            self.ui.label.setText("Opening Text")
-            win32api.ShellExecute(0, 'open', 'notepad.exe', '', '', 0)
+            self.ui.label.setText("Opening Notepad")
+            win32api.ShellExecute(0, 'open', 'notepad.exe', '', '', 1)
         elif instruction_calculator:
             self.ui.label.setText("Opening Calculator")
-            win32api.ShellExecute(0, 'open', 'notepad.exe', '', '', 0)
+            win32api.ShellExecute(0, 'open', 'calc.exe', '', '', 1)
         else:
-            print(content)
             self.ui.label.setText("I have no idea...")
 
         time.sleep(2.1)
-        self.ui.label.setText("How can i help you?")
+        self.ui.label.setText("How can I help?")
+
+        self.ui.label_2.setVisible(True)
+        self.ui.label_3.setVisible(True)
+        self.ui.label_4.setVisible(True)
+        self.ui.label_5.setVisible(True)
 
 
 app = QtWidgets.QApplication([])
